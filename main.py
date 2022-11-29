@@ -93,7 +93,7 @@ def has_won(grid):
         for y in range(3):
             if grid[y][x] == grid[y + 1][x + 1] == grid[y + 2][x + 2] == grid[y + 3][x + 3] != None:
                 return True
-            elif grid[5 - y][6 - x] == grid[4 - y][5 - x] == grid[3 - y][4 - x] == grid[2 - y][3 - x] != None:
+            elif grid[5 - y][x] == grid[4 - y][x + 1] == grid[3 - y][x + 2] == grid[2 - y][x + 3] != None:
                 return True
 
     return False
@@ -118,7 +118,7 @@ while True:
     click = pygame.mouse.get_pressed()[0]
     mouse_x, mouse_y = pygame.mouse.get_pos()
 
-    clicked_this_frame = click and not clicked_this_frame
+    clicked_this_frame = click and not clicked_last_frame
     clicked_last_frame = click
 
     if has_won(grid):
